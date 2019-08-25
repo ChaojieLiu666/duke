@@ -7,7 +7,7 @@ public class TaskList {
         tasks = new ArrayList<Task>(100);
     }
 
-    public void addTodo(String description) {
+    public void addToDo(String description) {
         tasks.add(new ToDo(description));
     }
 
@@ -21,6 +21,10 @@ public class TaskList {
 
     public void done(int index) { // 0-based
         tasks.get(index).markAsDone();
+    }
+
+    public void delete(int index) { // 0-based
+        tasks.remove(index);
     }
 
 

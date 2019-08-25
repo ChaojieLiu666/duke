@@ -13,7 +13,7 @@ public class AddCommand extends Command {
     public void execute(TaskList tasks, Ui ui){
         switch (super.commandType) {
             case "todo":
-                tasks.addTodo(description);
+                tasks.addToDo(description);
                 break;
             case "deadline":
                 tasks.addDeadline(description, ddl);

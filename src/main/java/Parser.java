@@ -54,6 +54,16 @@ public class Parser {
                     throw new DukeException("☹ OOPS!!! The index should be numerical.");
                 }
                 return new DoneCommand(index-1); // 0-based
+            case "delete":
+                if (tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The index cannot be empty.");
+                }
+                try {
+                    index = Integer.parseInt(tokens[0]);
+                } catch(NumberFormatException e) {
+                    throw new DukeException("☹ OOPS!!! The index should be numerical.");
+                }
+                return new DeleteCommand(index-1); // 0-based
             case "bye":
                 if(!tokens[0].equals("")) {
                     throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -66,7 +76,8 @@ public class Parser {
     }
 
     public static Command parse(String fullCommand) throws DukeException {
-        m = Pattern.compile("todo|deadline|event|list|done|bye").matcher(fullCommand); // AddCommmand
+        String regex = "todo|deadline|event|list|done|bye|delete";
+        m = Pattern.compile(regex).matcher(fullCommand); // AddCommmand
         if(m.find()) {
             commandType = m.group();
             fullCommand = m.replaceFirst("").trim();
