@@ -14,39 +14,50 @@ public class Parser {
             case "todo":
                 if (tokens.length > 1) {
                     throw new DukeException("Please use other command to store time.");
+                } else if (tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
                 }
                 description = tokens[0];
                 return new AddCommand(commandType, description,"","");
+
             case "deadline":
-                if (tokens.length < 2) {
-                    throw new DukeException("Incomplete command!");
+                if (tokens.length == 1 && !tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The time of a deadline cannot be empty.");
+                } else if(tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.");
                 }
                 description = tokens[0];
                 ddl = tokens[1];
                 return new AddCommand(commandType, description, ddl, "");
 
             case "event":
-                if (tokens.length < 2) {
-                    throw new DukeException("Incomplete command!");
+                if (tokens.length == 1 && !tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The time of an event cannot be empty.");
+                } else if(tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! The description of an event cannot be empty.");
                 }
                 description = tokens[0];
                 timePiece= tokens[1];
                 return new AddCommand(commandType, description, "", timePiece);
             case "list":
-                if(tokens.length > 1 || !tokens[0].equals("")) {
-                    System.out.println(tokens[0] + tokens.length);
+                if(!tokens[0].equals("")) {
                     throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
                 return new ListCommand();
             case "done":
                 if (tokens[0].equals("")) {
-                    throw new DukeException("Please indicate the index!");
-                } else if (tokens.length > 1) {
-                    throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                    throw new DukeException("☹ OOPS!!! The index cannot be empty.");
                 }
-                index = Integer.parseInt(tokens[0]);
+                try {
+                    index = Integer.parseInt(tokens[0]);
+                } catch(NumberFormatException e) {
+                    throw new DukeException("☹ OOPS!!! The index should be numerical.");
+                }
                 return new DoneCommand(index-1); // 0-based
             case "bye":
+                if(!tokens[0].equals("")) {
+                    throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                }
                 return new ExitCommand();
             default:
                 throw new DukeException("Unknow error!");

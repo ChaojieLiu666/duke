@@ -7,8 +7,12 @@ public class DoneCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui) {
-        tasks.done(index);
+    public void execute(TaskList tasks, Ui ui) throws DukeException {
+        try {
+            tasks.done(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeException("☹ OOPS!!! The index should be in range.");
+        }
         ui.println("Nice! I've marked this task as done:");
         ui.println(tasks.getTaskInfo(index));
     }
