@@ -1,16 +1,16 @@
 public class Task {
-    private String description;
-    private boolean isDone;
+    protected String description;
+    protected boolean isDone;
 
-    Task(String description) {
+    protected Task(String description) {
         this.description = description;
         this.isDone = false;
     }
 
-    void markAsDone() {
+    protected void markAsDone() {
         isDone = true;
     }
-    void markAsNotDone() {
+    protected void markAsNotDone() {
         isDone = false;
     }
 
@@ -26,5 +26,4 @@ public class Task {
     public String toString () {
         return "[" + getStatusIcon() + "] " + description;
     }
-
 }
