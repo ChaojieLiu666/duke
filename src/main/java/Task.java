@@ -23,7 +23,18 @@ public class Task {
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "[" + getStatusIcon() + "] " + description;
+    }
+
+    public String toStorageString() {
+        String storageString;
+        if (isDone == true) {
+            storageString = "1";
+        } else {
+            storageString = "0";
+        }
+        storageString += " | " + description;
+        return storageString;
     }
 }

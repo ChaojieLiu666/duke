@@ -10,7 +10,7 @@ public class AddCommand extends Command {
         this.timePiece = timePiece;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui){
+    public void execute(TaskList tasks, Ui ui, Storage storage){
         switch (super.commandType) {
             case "todo":
                 tasks.addToDo(description);
@@ -21,6 +21,11 @@ public class AddCommand extends Command {
             case "event":
                 tasks.addEvent(description, timePiece);
                 break;
+        }
+        try {
+            storage.update(tasks.toStorageStrings());
+        } catch (DukeException e) {
+            throw e;
         }
         ui.println("Got it. I've added this task:");
         ui.println(tasks.getTaskInfo(tasks.getSize() - 1));

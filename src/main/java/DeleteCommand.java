@@ -1,3 +1,4 @@
+/*
 public class DeleteCommand extends Command {
     private int index;
 
@@ -20,3 +21,4 @@ public class DeleteCommand extends Command {
         ui.println("Now you have " + tasks.getSize() + " tasks in the list.");
     }
 }
+*/ // Delete Command is blocked as Level-6 is not required for Week 3 Schedule.

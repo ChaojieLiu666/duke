@@ -5,7 +5,7 @@ public class Command {
         this.commandType = commandType;
     }
 
-    protected void execute(TaskList tasks, Ui ui) {
+    protected void execute(TaskList tasks, Ui ui, Storage storage) {
         // to be overridden
     }
 
