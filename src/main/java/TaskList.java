@@ -41,12 +41,20 @@ public class TaskList {
         tasks.add(new ToDo(description));
     }
 
-    public void addDeadline(String description, String ddl){
-        tasks.add(new Deadline(description, ddl));
+    public void addDeadline(String description, String ddl) throws DukeException{
+        try {
+            tasks.add(new Deadline(description, ddl));
+        } catch (DukeException e) {
+            throw e;
+        }
     }
 
-    public void addEvent(String description, String timePiece) {
-        tasks.add(new Event(description, timePiece));
+    public void addEvent(String description, String timePiece) throws DukeException {
+        try {
+            tasks.add(new Event(description, timePiece));
+        } catch (DukeException e) {
+            throw e;
+        }
     }
 
     public void done(int index) { // 0-based

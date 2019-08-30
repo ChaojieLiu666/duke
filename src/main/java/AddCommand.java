@@ -11,6 +11,7 @@ public class AddCommand extends Command {
     }
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage){
+        try {
         switch (super.commandType) {
             case "todo":
                 tasks.addToDo(description);
@@ -22,8 +23,7 @@ public class AddCommand extends Command {
                 tasks.addEvent(description, timePiece);
                 break;
         }
-        try {
-            storage.update(tasks.toStorageStrings());
+        storage.update(tasks.toStorageStrings());
         } catch (DukeException e) {
             throw e;
         }
