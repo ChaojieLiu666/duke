@@ -60,11 +60,11 @@ public class TaskList {
     public void done(int index) { // 0-based
         tasks.get(index).markAsDone();
     }
-    /*
+
     public void delete(int index) { // 0-based
         tasks.remove(index);
     }
-    */ // Delete Command is blocked as Level-6 is not required for Week 3 Schedule.
+
 
     public String getTaskInfo(int index) {
         return tasks.get(index).toString();

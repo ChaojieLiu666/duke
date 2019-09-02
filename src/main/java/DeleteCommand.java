@@ -1,4 +1,4 @@
-/*
+
 public class DeleteCommand extends Command {
     private int index;
 
@@ -8,7 +8,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         String str;
         try {
             str = tasks.getTaskInfo(index);
@@ -16,9 +16,9 @@ public class DeleteCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("☹ OOPS!!! The index should be in range.");
         }
+        storage.update(tasks.toStorageStrings());
         ui.println("Noted. I've removed this task:");
         ui.println(str);
         ui.println("Now you have " + tasks.getSize() + " tasks in the list.");
     }
 }
-*/ // Delete Command is blocked as Level-6 is not required for Week 3 Schedule.
