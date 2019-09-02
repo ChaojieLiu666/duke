@@ -66,6 +66,12 @@ public class Parser {
                 }
                 return new DeleteCommand(index-1); // 0-based
              */ // Delete Command is blocked as Level-6 is not required for Week 3 Schedule.
+            case "find":
+                if(tokens[0].equals("") || tokens.length > 1) {
+                    throw new DukeException("☹ OOPS!!! I don't what to find.");
+                }
+                return new FindCommand(tokens[0]);
+
             case "bye":
                 if(!tokens[0].equals("")) {
                     throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -78,7 +84,7 @@ public class Parser {
     }
 
     public static Command parse(String fullCommand) throws DukeException {
-        String regex = "todo|deadline|event|list|done|bye";
+        String regex = "todo|deadline|event|list|done|bye|find";
         m = Pattern.compile(regex).matcher(fullCommand); // AddCommmand
         if(m.find()) {
             commandType = m.group();
