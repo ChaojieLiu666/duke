@@ -66,6 +66,16 @@ public class TaskList {
     }
 
 
+    public ArrayList<Integer> find(String s) {
+        ArrayList<Integer> matchedList = new ArrayList<Integer>(100);
+        for (int i = 0 ; i < tasks.size(); i++) {
+            if (tasks.get(i).contains(s)) {
+                matchedList.add(i);
+            }
+        }
+        return matchedList;
+    }
+
     public String getTaskInfo(int index) {
         return tasks.get(index).toString();
     }

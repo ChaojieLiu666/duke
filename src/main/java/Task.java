@@ -37,4 +37,8 @@ public class Task {
         storageString += " | " + description;
         return storageString;
     }
+
+    public boolean contains(String s) {
+        return description.contains(s);
+    }
 }

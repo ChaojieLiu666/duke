@@ -64,19 +64,25 @@ public class Parser {
                     throw new DukeException("☹ OOPS!!! The index should be numerical.");
                 }
                 return new DeleteCommand(index-1); // 0-based
+            case "find":
+                if(tokens[0].equals("") || tokens.length > 1) {
+                    throw new DukeException("☹ OOPS!!! I don't what to find.");
+                }
+                return new FindCommand(tokens[0]);
+
             case "bye":
                 if(!tokens[0].equals("")) {
                     throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
                 return new ExitCommand();
             default:
-                throw new DukeException("Unknow error!");
+                throw new DukeException("Unknown error!");
         }
 
     }
 
     public static Command parse(String fullCommand) throws DukeException {
-        String regex = "todo|deadline|event|list|done|bye|delete";
+        String regex = "todo|deadline|event|list|done|bye|delete|find";
         m = Pattern.compile(regex).matcher(fullCommand); // AddCommmand
         if(m.find()) {
             commandType = m.group();
