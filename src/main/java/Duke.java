@@ -7,19 +7,22 @@ import parser.Parser;
 
 public class Duke {
 
-    public static void main(String[] args) {
-        Ui ui = new Ui();
-        // System.out.println(System.getProperty("user.dir") + "/data/TaskListStorage.txt");
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
 
-        Storage storage = new Storage(System.getProperty("user.dir") + "/data/TaskListStorage.txt");
-        TaskList tasks;
+    public Duke(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
         } catch (DukeException e) {
             ui.showError(e);
             tasks = new TaskList();
         }
+    }
 
+    public void run() {
         ui.showWelcome();
         boolean isExit = false;
         while (!isExit) {
@@ -32,8 +35,10 @@ public class Duke {
                 ui.showError(e);
             }
         }
+    }
 
-
+    public static void main(String[] args) {
+        new Duke(System.getProperty("user.dir") + "/data/TaskListStorage.txt").run();
     }
 
 }
