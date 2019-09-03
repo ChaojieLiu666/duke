@@ -1,3 +1,7 @@
+package command;
+import task.TaskList;
+import ui.Ui;
+import storage.Storage;
 public class Command {
     protected String commandType;
 
@@ -5,7 +9,7 @@ public class Command {
         this.commandType = commandType;
     }
 
-    protected void execute(TaskList tasks, Ui ui, Storage storage) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         // to be overridden
     }
 
