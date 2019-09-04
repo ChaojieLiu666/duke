@@ -1,6 +1,7 @@
 package storage;
+
 import exception.DukeException;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -8,12 +9,9 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Storage {
-    private String filePath;
     private File file;
 
     public Storage(String filePath){
-
-        this.filePath = filePath;
         file = new File(filePath);
 
     }

@@ -1,8 +1,10 @@
 package command;
+
 import task.TaskList;
 import ui.Ui;
 import storage.Storage;
 import exception.DukeException;
+
 public class DoneCommand extends Command {
     private int index;
 
@@ -18,11 +20,8 @@ public class DoneCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("☹ OOPS!!! The index should be in range.");
         }
-        try {
-            storage.update(tasks.toStorageStrings());
-        } catch (DukeException e) {
-            throw e;
-        }
+        storage.update(tasks.toStorageStrings());
+
         ui.println("Nice! I've marked this task as done:");
         ui.println(tasks.getTaskInfo(index));
     }

@@ -31,7 +31,7 @@ public class Task {
 
     public String toStorageString() {
         String storageString;
-        if (isDone == true) {
+        if (isDone) {
             storageString = "1";
         } else {
             storageString = "0";

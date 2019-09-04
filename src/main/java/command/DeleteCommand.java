@@ -1,8 +1,10 @@
 package command;
+
 import task.TaskList;
 import ui.Ui;
 import storage.Storage;
 import exception.DukeException;
+
 public class DeleteCommand extends Command {
     private int index;
 

@@ -1,8 +1,11 @@
 package command;
+
 import task.TaskList;
 import ui.Ui;
 import storage.Storage;
+
 import exception.DukeException;
+
 public class AddCommand extends Command {
     private String description;
     private String ddl;
@@ -15,8 +18,7 @@ public class AddCommand extends Command {
         this.timePiece = timePiece;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage){
-        try {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException{
         switch (super.commandType) {
             case "todo":
                 tasks.addToDo(description);
@@ -29,9 +31,7 @@ public class AddCommand extends Command {
                 break;
         }
         storage.update(tasks.toStorageStrings());
-        } catch (DukeException e) {
-            throw e;
-        }
+
         ui.println("Got it. I've added this task:");
         ui.println(tasks.getTaskInfo(tasks.getSize() - 1));
         ui.println("Now you have " + tasks.getSize() + " tasks in the list.");

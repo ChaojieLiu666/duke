@@ -2,6 +2,7 @@ package parser;
 
 import command.*;
 import exception.DukeException;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -95,11 +96,7 @@ public class Parser {
             for(int i = 0; i < tokens.length; i++) {
                 tokens[i] = tokens[i].trim();
             }
-            try {
-                return packageCommand(commandType, tokens);
-            } catch (DukeException e) {
-                throw e;
-            }
+            return packageCommand(commandType, tokens);
         } else {
             throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
         }

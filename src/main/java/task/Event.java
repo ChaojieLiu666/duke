@@ -1,6 +1,8 @@
 package task;
+
 import exception.DukeException;
 import parser.TimeParser;
+
 import java.util.Date;
 
 public class Event extends Task {
@@ -16,12 +18,8 @@ public class Event extends Task {
         for(int i = 0; i < tokens.length; i++) {
             tokens[i] = tokens[i].trim();
         }
-        try {
-            start = TimeParser.parse(tokens[0]);
-            end = TimeParser.parse(tokens[1]);
-        } catch (DukeException e) {
-            throw e;
-        }
+        start = TimeParser.parse(tokens[0]);
+        end = TimeParser.parse(tokens[1]);
     }
 
     @Override

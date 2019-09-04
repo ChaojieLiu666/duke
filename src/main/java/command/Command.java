@@ -1,7 +1,9 @@
 package command;
+
 import task.TaskList;
 import ui.Ui;
 import storage.Storage;
+
 public class Command {
     protected String commandType;
 

@@ -1,6 +1,8 @@
 package task;
+
 import exception.DukeException;
 import parser.TimeParser;
+
 import java.util.Date;
 
 public class Deadline extends Task {
@@ -10,13 +12,9 @@ public class Deadline extends Task {
     public Deadline(String description, String ddl) throws DukeException {
         super(description);
         this.ddl = ddl;
-        try {
-            by = TimeParser.parse(ddl);
-        } catch (DukeException e) {
-            throw e;
-        }
+        by = TimeParser.parse(ddl);
     }
-    // (by: June 6th)
+
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + ddl + ")";
