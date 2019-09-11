@@ -6,6 +6,10 @@ import exception.DukeException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+/**
+ * Parses the command line from user input to tokens and
+ * packages the tokens to <code>Command</code> object.
+ */
 public class Parser {
     private static String commandType;
     private static String description;
@@ -14,6 +18,16 @@ public class Parser {
     private static Matcher m;
     private static int index;
 
+    /**
+     * Packages the <code>Command</code> object with commandType and
+     * tokens of command information.
+     * Returns the packaged command.
+     *
+     * @param commandType The commandType of the command. e.g. list
+     * @param tokens Pieces of information of the command.
+     * @return <code>Command</code> object.
+     * @throws DukeException If user input is invalid.
+     */
     private static Command packageCommand(String commandType, String[] tokens) throws DukeException {
         switch(commandType) {
             case "todo":
@@ -86,6 +100,15 @@ public class Parser {
 
     }
 
+    /**
+     * Converts the <code>String</code> fullCommand into <code>Command</code> object,
+     * by using <code>packageCommand</code> method.
+     * Returns the <code>Command</code> object.
+     *
+     * @param fullCommand The command line read from user input.
+     * @return <code>Command</code> object converted from fullCommand.
+     * @throws DukeException If user input is invalid.
+     */
     public static Command parse(String fullCommand) throws DukeException {
         String regex = "todo|deadline|event|list|done|bye|delete|find";
         m = Pattern.compile(regex).matcher(fullCommand); // AddCommmand

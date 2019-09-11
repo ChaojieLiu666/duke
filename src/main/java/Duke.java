@@ -5,12 +5,20 @@ import exception.DukeException;
 import command.Command;
 import parser.Parser;
 
+/**
+ * Represents our Duke and contains the main program of Duke.
+ */
 public class Duke {
 
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Constructs the Duke with the filePath of storage.txt
+     *
+     * @param filePath The filePath of storage.txt
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -22,6 +30,9 @@ public class Duke {
         }
     }
 
+    /**
+     * Runs the Duke.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -37,6 +48,11 @@ public class Duke {
         }
     }
 
+    /**
+     * Runs the main program of the Duke.
+     *
+     * @param args necessary arguments demanded by the main method.
+     */
     public static void main(String[] args) {
         new Duke(System.getProperty("user.dir") + "/data/TaskListStorage.txt").run();
     }
