@@ -9,7 +9,8 @@ import exception.DukeException;
 /**
  * Represents a specified command as AddCommand by extending the <code>Command</code> class.
  * Adds various specified type of tasks into the taskList. e.g event
- * Responses with the result.
+ * Responses with the result of adding the task.
+ *
  */
 public class AddCommand extends Command {
     private String description;
